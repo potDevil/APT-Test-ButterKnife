@@ -26,7 +26,9 @@ public class ClassCreatorProxy {
     public ClassCreatorProxy(Elements elementUtils, TypeElement typeElement) {
         this.typeElement = typeElement;
         PackageElement packageElement = elementUtils.getPackageOf(typeElement);
+        // 获取包名
         String packageName = packageElement.getQualifiedName().toString();
+        // 获取类名
         String className = typeElement.getSimpleName().toString();
         this.packageName = packageName;
         this.bindingClassName = className + "_ViewBinding";
@@ -64,6 +66,7 @@ public class ClassCreatorProxy {
         for (int id : variableElementMap.keySet()) {
             VariableElement element = variableElementMap.get(id);
             String name = element.getSimpleName().toString();
+            // 获取字段类型(android.widget.TextView)
             String type = element.asType().toString();
             methodBuilder.addCode("host." + name + "=" + "(" + type
                     + ")(((android.app.Activity)host).findViewById(" + id + "));");

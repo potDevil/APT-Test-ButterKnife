@@ -38,6 +38,10 @@ public class BindViewProcessor extends AbstractProcessor{
     private Elements elementUtils;
     private Map<String, ClassCreatorProxy> proxyMap = new HashMap<>();
 
+    /**
+     * 初始化操作
+     * @param processingEnvironment
+     */
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
@@ -45,6 +49,10 @@ public class BindViewProcessor extends AbstractProcessor{
         elementUtils = processingEnvironment.getElementUtils();
     }
 
+    /**
+     * 返回此Processor支持的注解类型的名称。结果元素可能是某一受支持注释类型的规范(完全限定)名称。
+     * @return
+     */
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         HashSet<String> supportTypes = new LinkedHashSet<>();
@@ -52,16 +60,26 @@ public class BindViewProcessor extends AbstractProcessor{
         return supportTypes;
     }
 
+    /**
+     * 返回此注解Processor支持的最新的源版本
+     * @return
+     */
     @Override
     public SourceVersion getSupportedSourceVersion() {
         return SourceVersion.latestSupported();
     }
 
+    /**
+     * 处理器，处理具体注解
+     * @param set
+     * @param roundEnvironment
+     * @return
+     */
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        messager.printMessage(Diagnostic.Kind.NOTE, " processing...");
+        messager.printMessage(Diagnostic.Kind.NOTE, "Printing: processing...");
         proxyMap.clear();
-        // 得到所有注解
+        // 1.获取代码中所有@BindView注解修饰的字段
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(BindView.class);
         for (Element element  : elements) {
             VariableElement variableElement = (VariableElement) element;
@@ -74,7 +92,7 @@ public class BindViewProcessor extends AbstractProcessor{
                 proxyMap.put(fullClassName, proxy);
             }
             BindView bindAnnotation = variableElement.getAnnotation(BindView.class);
-            // id = value = @BindView(R.id.tv) -> R.id.tv
+            // 获取注解元素的值:id = value = @BindView(R.id.tv) -> R.id.tv
             int id = bindAnnotation.value();
             proxy.putElement(id, variableElement);
         }
@@ -109,7 +127,7 @@ public class BindViewProcessor extends AbstractProcessor{
                 e.printStackTrace();
             }
         }
-        messager.printMessage(Diagnostic.Kind.NOTE, "process finish ...");
+        messager.printMessage(Diagnostic.Kind.NOTE, "Printing: process finish ...");
         return true;
     }
 }
