@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.apt_processor.test;
+package example.hulk.com.apt_processor.test;
 
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.JavaFile;
@@ -18,7 +18,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 
-import example.fastec.hulk.com.apt_annotation.test.Test;
+import example.hulk.com.apt_annotation.test.Test;
 
 @AutoService(Processor.class)//自动生成 javax.annotation.processing.IProcessor 文件
 public class AnnotationProcessor extends AbstractProcessor {

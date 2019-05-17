@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.apt_processor.bindview;
+package example.hulk.com.apt_processor.bindview;
 
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
@@ -81,7 +81,7 @@ public class ClassCreatorProxy {
     public String generateJavaCode2() {
         StringBuilder builder = new StringBuilder();
         builder.append("package ").append(packageName).append(";\n\n");
-        builder.append("import example.fastec.hulk.com.apt_library.*;\n");
+        builder.append("import example.hulk.com.apt_library.*;\n");
         builder.append('\n');
         builder.append("public class ").append(bindingClassName);
         builder.append(" {\n");

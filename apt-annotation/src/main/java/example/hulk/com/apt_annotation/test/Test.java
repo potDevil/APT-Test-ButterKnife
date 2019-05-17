@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.apt_annotation.test;
+package example.hulk.com.apt_annotation.test;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.apt_processor.bindview;
+package example.hulk.com.apt_processor.bindview;
 
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.JavaFile;
@@ -24,7 +24,8 @@ import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
-import example.fastec.hulk.com.apt_annotation.bindview.BindView;
+import example.hulk.com.apt_annotation.bindview.BindView;
+
 
 /**
  * Created by fuzhi on 2019/5/15

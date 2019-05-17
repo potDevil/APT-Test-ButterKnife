@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.apt_library;
+package example.hulk.com.apt_library;
 
 import android.app.Activity;
 

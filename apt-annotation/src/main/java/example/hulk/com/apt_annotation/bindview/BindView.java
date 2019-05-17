@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.apt_annotation.bindview;
+package example.hulk.com.apt_annotation.bindview;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
